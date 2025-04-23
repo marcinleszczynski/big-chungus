@@ -1,6 +1,7 @@
 name: deploy-aws.yml
 on:
-    push: ['main']
+    push:
+        branches: ['main']
 jobs:
     deploy:
         runs-on: ubuntu-latest
