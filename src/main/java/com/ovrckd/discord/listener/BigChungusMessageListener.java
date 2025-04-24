@@ -2,9 +2,7 @@ package com.ovrckd.discord.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ovrckd.discord.listener.dto.DiscordMessageDto;
-import com.ovrckd.discord.sender.DiscordMessageSendService;
 import com.ovrckd.discord.sender.DiscordMessagingOrchestrator;
-import com.ovrckd.discord.sender.dto.DiscordMessageSendRequest;
 import com.ovrckd.discord.sender.dto.DiscordMessagingOrchestratorDto;
 import com.ovrckd.llm.engine.GeminiService;
 import com.ovrckd.llm.engine.response.AnalysisResponse;
@@ -21,13 +19,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+import static com.ovrckd.utils.SpringUtils.isDevelopment;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 @PropertySource("classpath:application.properties")
-public class DiscordMessageListener extends ListenerAdapter {
+public class BigChungusMessageListener extends ListenerAdapter {
 
     private final GeminiRequestFactory geminiRequestFactory;
     private final GeminiService geminiService;
@@ -74,7 +73,7 @@ public class DiscordMessageListener extends ListenerAdapter {
             return true;
         }
 
-        if (event.getChannel().getId().equals("1363445136213938190")) {
+        if (isDevelopment() && event.getChannel().getId().equals("1363445136213938190")) {
             return true;
         }
 
