@@ -1,7 +1,6 @@
 package com.ovrckd.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ovrckd.discord.listener.DiscordMessageListener;
 import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -44,10 +43,8 @@ public class AppConfig {
 
     @Bean
     public JDA jda() {
-        // enables explicit access to message.getContentDisplay()
-        //        jda.addEventListener(discordMessageListener);
         return JDABuilder.createDefault(botToken)
-                .enableIntents(GatewayIntent.MESSAGE_CONTENT) // enables explicit access to message.getContentDisplay()
+                .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();
     }
 }
